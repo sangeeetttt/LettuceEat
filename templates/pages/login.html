@@ -1,0 +1,220 @@
+
+<html>
+  <head>
+      <title>Animated Form Switching with jQuery</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta name="description" content="Expand, contract, animate forms with jQuery wihtout leaving the page" />
+      <meta name="keywords" content="expand, form, css3, jquery, animate, width, height, adapt, unobtrusive javascript"/>
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+  <link rel='manifest' href='manifest.json'>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+  <!-- Bootstrap -->
+  <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='/css/bootstrap.css') }}">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='/css/animate.css') }}">
+  <!-- Default stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='/css/main.css') }}">
+  <script src="js/cufon-yui.js" type="text/javascript"></script>
+  <script src="js/ChunkFive_400.font.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    Cufon.replace('h1',{ textShadow: '1px 1px #fff'});
+    Cufon.replace('h2',{ textShadow: '1px 1px #fff'});
+    Cufon.replace('h3',{ textShadow: '1px 1px #000'});
+    Cufon.replace('.back');
+  </script>
+  </head>
+  <body>
+    <header>
+      <!-- NAVBAR -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand animated pulse" href="">
+          <img src="{{ url_for('static',filename='media/brand/logo-dark.svg') }}" width="30" height="30" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/food" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
+              </a>
+              <div class="dropdown-menu text-center text-lg-left" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/food">Food</a>
+
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/reservations">Reservations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+          </ul>
+          <div class="ml-auto">
+            
+            <a type="button" class="btn btn-success" role="button" href="{{ url_for('views.home') }}">back</a> 
+          </div>
+        </div>
+      </nav>
+    </header> 
+  <main>   
+    <div class="wrapper">
+      <div class="content">
+        <div id="form_wrapper" class="form_wrapper">
+
+
+          <form class="register" method="post">
+            <h3>Register</h3>
+            <div class="column">
+              <div>
+                <label>First Name:</label>
+                <input type="text" name="firstname"  />
+                <span class="error">This is an error</span>
+              </div>
+              <div>
+                <label>Last Name:</label>
+                <input type="text" name="lastname" />
+                <span class="error">This is an error</span>
+              </div>
+              <div>
+                <label>Address:</label>
+                <input type="text" name="address" >
+                <span class="error">This is an error</span>
+              </div>
+            </div>
+            <div class="column">
+              <div>
+                <label>Username:</label>
+                <input type="text" name="username"/>
+                <span class="error">This is an error</span>
+              </div>
+              <div>
+                <label>Email:</label>
+                <input type="text" name="email" />
+                <span class="error">This is an error</span>
+              </div>
+              <div>
+                <label>Password:</label>
+                <input type="password" name="password"/>
+                <span class="error">This is an error</span>
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="remember">
+              </div>
+              <!-- <input type="submit" value="register" name="register" > -->
+              <button type="submit" class="btn btn-success" name="btn" value="register" >Register</button>
+              <a href="/admin" rel="login" class="linkform">You have an account already? Log in here</a>
+              <div class="clear"></div>
+            </div>
+          </form>
+
+
+          <form class="login active" method="post">
+            <h3>Login to Lettuce Eat</h3>
+            <div>
+              <label>Username:</label>
+              <input type="text" name="username_login"/>
+              <span class="error">This is an error</span>
+            </div>
+            <div>
+              <label>Password: </label>
+              <input type="password" name="password_login"/>
+              <span class="error">This is an error</span>
+            </div>
+            <div class="bottom">
+              <div class="remember"></div>
+              <button type="submit" class="btn btn-success" href="/admin" name="btn" value="Login">Login</button>
+
+              <a href="/register" rel="register" class="linkform">Don't have an Admin account yet? Register here</a>
+              <div class="clear"></div>
+            </div>
+          </form>
+
+
+          
+        </div>
+        <div class="clear"></div>
+      </div>
+      <a class="back" href="/">Back to LettuceEat </a>
+    </div>
+  </main>
+      
+  
+  <!-- The JavaScript -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+        //the form wrapper (includes all forms)
+      var $form_wrapper	= $('#form_wrapper'),
+        //the current form is the one with class active
+        $currentForm	= $form_wrapper.children('form.active'),
+        //the change form links
+        $linkform		= $form_wrapper.find('.linkform');
+          
+				
+      $form_wrapper.children('form').each(function(i){
+        var $theForm	= $(this);
+
+        if(!$theForm.hasClass('active'))
+          $theForm.hide();
+        $theForm.data({
+          width	: $theForm.width(),
+          height	: $theForm.height()
+        });
+      });
+      
+
+      setWrapperWidth();
+      
+      $linkform.bind('click',function(e){
+        var $link	= $(this);
+        var target	= $link.attr('rel');
+        $currentForm.fadeOut(400,function(){
+          //remove class active from current form
+          $currentForm.removeClass('active');
+          //new current form
+          $currentForm= $form_wrapper.children('form.'+target);
+          //animate the wrapper
+          $form_wrapper.stop()
+                 .animate({
+                  width	: $currentForm.data('width') + 'px',
+                  height	: $currentForm.data('height') + 'px'
+                 },500,function(){
+                  //new form gets class active
+                  $currentForm.addClass('active');
+                  //show the new form
+                  $currentForm.fadeIn(400);
+                 });
+        });
+        e.preventDefault();
+      });
+      
+      function setWrapperWidth(){
+        $form_wrapper.css({
+          width	: $currentForm.data('width') + 'px',
+          height	: $currentForm.data('height') + 'px'
+        });
+      }
+      
+      $form_wrapper.find('input[type="submit"]')
+             .click(function(e){
+              e.preventDefault();
+             });	
+    });
+      </script>
+  </body>
+</html>
